@@ -39,8 +39,7 @@ public class DumpRequestServlet extends HttpServlet {
 	protected void processRequest(final HttpServletRequest request, final HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("text/html;charset=UTF-8");
-		final PrintWriter out = response.getWriter();
-		try {
+		try (PrintWriter out = response.getWriter()) {
 			/* TODO output your page here. You may use following sample code. */
 			out.println("<!DOCTYPE html>");
 			out.println("<html>");
@@ -57,8 +56,6 @@ public class DumpRequestServlet extends HttpServlet {
 			out.println("<pre>" + dumpRequest(request) + "</pre>");
 			out.println("</body>");
 			out.println("</html>");
-		} finally {
-			out.close();
 		}
 	}
 
